@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   index_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 14:29:40 by mhaouas           #+#    #+#             */
-/*   Updated: 2023/12/21 13:48:29 by mhaouas          ###   ########.fr       */
+/*   Created: 2023/12/21 14:33:57 by mhaouas           #+#    #+#             */
+/*   Updated: 2023/12/21 14:44:29 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-
-int	main(int argc, char **argv)
+void	add_sub_to_index(int to_add, t_ps **stack)
 {
-	char	*tmp;
-	char	**all_args;
-	t_ps	*stack_a;
+	t_ps	*node;
 
-	if (argc < 2)
-		return (1);
-	tmp = ft_unsplit(argv + 1, " ");
-	all_args = ft_split(tmp, ' ');
-	free(tmp);
-	check_args(all_args);
-	stack_a = make_pile_a(all_args);
-	while (stack_a)
+	node = *stack;
+	while (node)
 	{
-		printf("Number (characters) :%s, Number (int) : %d, Index : %d\n", stack_a->c_number, stack_a->i_number, stack_a->index);
-		stack_a = stack_a->next;
+		node->index += to_add;
+		node = node->next;
 	}
 }

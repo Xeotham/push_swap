@@ -6,13 +6,13 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:54:50 by mhaouas           #+#    #+#             */
-/*   Updated: 2023/12/20 16:09:21 by mhaouas          ###   ########.fr       */
+/*   Updated: 2023/12/21 15:03:52 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps_a	*ft_stack_a_lstlast(t_ps_a *lst)
+t_ps	*ft_stack_a_lstlast(t_ps *lst)
 {
 	while (lst != NULL)
 	{
@@ -23,9 +23,9 @@ t_ps_a	*ft_stack_a_lstlast(t_ps_a *lst)
 	return (NULL);
 }
 
-void	ft_stack_a_lstadd_back(t_ps_a **lst, t_ps_a *new)
+void	ft_stack_a_lstadd_back(t_ps **lst, t_ps *new)
 {
-	t_ps_a	*tmp;
+	t_ps	*tmp;
 
 	if (!(*lst))
 		*lst = new;
@@ -36,9 +36,9 @@ void	ft_stack_a_lstadd_back(t_ps_a **lst, t_ps_a *new)
 	}
 }
 
-void	ft_stack_a_lstclear(t_ps_a **lst)
+void	ft_stack_a_lstclear(t_ps **lst)
 {
-	t_ps_a	*tmp;
+	t_ps	*tmp;
 
 	if (!lst)
 		return ;
@@ -49,11 +49,4 @@ void	ft_stack_a_lstclear(t_ps_a **lst)
 		*lst = tmp;
 	}
 	*lst = NULL;
-}
-
-void	ft_Stack_a_lstadd_prev(t_ps_a *node, t_ps_a *prev)
-{
-	if (!prev || !node)
-		return ;
-	node->prev = prev;
 }

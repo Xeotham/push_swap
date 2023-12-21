@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:50:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2023/12/20 14:37:57 by mhaouas          ###   ########.fr       */
+/*   Updated: 2023/12/21 13:04:07 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int					ft_count_word(char const *s, char sep);
 char				*ft_unsplit(char **tab_to_unsplit, char *sep);
 char				*ft_strcat(char *s1, char *s2, char *array);
 void				free_2d_array(char **array);
+int					ft_strcmp(const char *s1, const char *s2);
 
 /*===================== BONUS PART =====================*/
 /*==================== BONUS STRUCT ====================*/
