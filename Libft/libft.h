@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:50:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2023/12/21 13:04:07 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:37:19 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
@@ -60,6 +61,8 @@ char				*ft_unsplit(char **tab_to_unsplit, char *sep);
 char				*ft_strcat(char *s1, char *s2, char *array);
 void				free_2d_array(char **array);
 int					ft_strcmp(const char *s1, const char *s2);
+int					ft_is_even(int nb);
+int					ft_abs(int to_check);
 
 /*===================== BONUS PART =====================*/
 /*==================== BONUS STRUCT ====================*/

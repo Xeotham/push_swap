@@ -41,7 +41,10 @@ SRCS = ft_isalpha.c \
 	ft_split.c \
 	ft_unsplit.c \
 	ft_strcat.c \
-	ft_free_2d_array.c
+	ft_free_2d_array.c \
+	ft_atol.c \
+	ft_is_even.c \
+	ft_abs.c
 #=============== BONUS SOURCES ==============#
 BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_a_utils.c                                    :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:54:50 by mhaouas           #+#    #+#             */
-/*   Updated: 2023/12/21 15:03:52 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/10 09:18:13 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps	*ft_stack_a_lstlast(t_ps *lst)
+t_ps	*stack_lstlast(t_ps *lst)
 {
 	while (lst != NULL)
 	{
@@ -23,7 +23,33 @@ t_ps	*ft_stack_a_lstlast(t_ps *lst)
 	return (NULL);
 }
 
-void	ft_stack_a_lstadd_back(t_ps **lst, t_ps *new)
+int	stack_lstcount(t_ps *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst != NULL)
+	{
+		if (lst->next == NULL)
+			return (i);
+		lst = lst->next;
+		i++;
+	}
+	return (0);
+}
+
+t_ps	*stack_lst_before_last(t_ps *lst)
+{
+	while (lst != NULL)
+	{
+		if (lst->next->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}
+
+void	stack_lstadd_back(t_ps **lst, t_ps *new)
 {
 	t_ps	*tmp;
 
@@ -31,12 +57,12 @@ void	ft_stack_a_lstadd_back(t_ps **lst, t_ps *new)
 		*lst = new;
 	else
 	{
-		tmp = ft_stack_a_lstlast(*lst);
+		tmp = stack_lstlast(*lst);
 		tmp->next = new;
 	}
 }
 
-void	ft_stack_a_lstclear(t_ps **lst)
+void	stack_lstclear(t_ps **lst)
 {
 	t_ps	*tmp;
 
