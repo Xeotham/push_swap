@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:54:50 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/10 09:18:13 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/15 10:11:43 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ int	stack_lstcount(t_ps *lst)
 	i = 0;
 	while (lst != NULL)
 	{
-		if (lst->next == NULL)
-			return (i);
 		lst = lst->next;
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 t_ps	*stack_lst_before_last(t_ps *lst)

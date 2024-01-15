@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:03:00 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/12 16:43:21 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:14:21 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ void	move_number(t_ps *node)
 			node->reverse = 0;
 			node->move_number = node->median - node->to_median;
 		}
-		else if (node->to_median < 0 && ft_is_even(node->median))
-		{
-			node->reverse = 1;
-			node->move_number = node->median + node->to_median + 1;
-		}
-		else if (node->to_median < 0 && !ft_is_even(node->median))
+		else if (node->to_median < 0)
 		{
 			node->reverse = 1;
 			node->move_number = node->median + node->to_median;
@@ -41,13 +36,13 @@ void	find_median(t_ps **stack)
 	t_ps	*node;
 	int		median;
 
-	i = 0;
 	node = *stack;
 	median = stack_lstcount(node);
-	if (ft_is_even(median))
-		median /= 2;
+	if (median == 5)
+		i = 1;
 	else
-		median = (median / 2) + 1; 
+		i = 0;
+	median = (median / 2) + i; 
 	while (node)
 	{
 		node->median = median;

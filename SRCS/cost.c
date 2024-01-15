@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:22:30 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/12 15:16:10 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:13:26 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	change_move(t_ps *node_a)
 
 	target = node_a->target;
 	if (target->reverse)
-			target->move_number = node_a->true_cost - (target->to_median + target->median);
+	{
+		target->move_number = node_a->true_cost - (target->to_median + target->median);
+	}
 	else
 			target->move_number = node_a->true_cost - (target->to_median - target->median);
 }
@@ -85,7 +87,10 @@ void	check_cost(t_ps **stack_search)
 	{
 		node_b = node_a->target;
 		check_sim_move(node_a, node_b);
-		if (node_a->move_number >= node_b->move_number)
+		if ((!node_a->reverse && node_b->reverse) ||
+			(node_a->reverse && !node_b->reverse))
+			node_a->true_cost = node_a->move_number + node_b->move_number;
+		else if (node_a->move_number >= node_b->move_number)
 			node_a->true_cost = node_a->move_number;
 		else
 			node_a->true_cost = node_b->move_number;
