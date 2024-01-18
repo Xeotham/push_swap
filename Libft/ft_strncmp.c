@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:47:31 by mhaouas           #+#    #+#             */
-/*   Updated: 2023/12/21 13:09:23 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:13:44 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;

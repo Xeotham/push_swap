@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 16:35:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/17 11:12:42 by mhaouas          ###   ########.fr       */
+/*   Created: 2023/11/10 12:10:11 by mhaouas           #+#    #+#             */
+/*   Updated: 2023/11/17 14:03:36 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_abs(int to_check)
-{
-	if (to_check < 0)
-		return (-to_check);
-	return (to_check);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+# include "../libft.h"
+
+char	*get_next_line(int fd);
+char	*gnl_loop(char *storage, int fd);
+int		is_new_line(char *buff);
+char	*dup_to_new_line(char *storage);
+char	*ft_strcat(char *s1, char *s2, char *array);
+char	*join_and_free(char *s1, char *s2);
+
+#endif

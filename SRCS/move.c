@@ -6,14 +6,40 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:45:46 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/12 15:17:15 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:39:26 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move(t_ps	**stack_a, t_ps **stack_b, int to_comp,
-	void move(t_ps **, t_ps **))
+void	make_best_move_f(t_ps **stack_a, t_ps **stack_b)
+{
+	t_ps	*cheapest;
+	t_ps	*target;
+
+	cheapest = find_cheapest(*stack_a);
+	if (!cheapest)
+		return ;
+	target = cheapest->target;
+	do_move_f(stack_a, stack_b, cheapest, target);
+	pb(stack_a, stack_b);
+}
+
+void	make_best_move_l(t_ps **stack_b, t_ps **stack_a)
+{
+	t_ps	*cheapest;
+	t_ps	*target;
+
+	cheapest = find_cheapest(*stack_b);
+	if (!cheapest)
+		return ;
+	target = cheapest->target;
+	do_move_l(stack_a, stack_b, cheapest, target);
+	pa(stack_a, stack_b);
+}
+
+void	move(t_ps **stack_a, t_ps **stack_b, int to_comp, void move(t_ps **,
+			t_ps **))
 {
 	int	i;
 
@@ -29,17 +55,19 @@ void	do_move_f(t_ps **stack_a, t_ps **stack_b, t_ps *cheapest, t_ps *target)
 {
 	if (cheapest->true_cost == 0)
 		return ;
-	if (target->sim_move)
+	if (cheapest->sim_move)
 	{
-		cheapest->move_number = cheapest->true_cost - cheapest->move_number;
-		target->move_number = cheapest->true_cost - target->move_number;
+		if (cheapest->move_number >= target->move_number)
+			cheapest->sim_move_cost = target->move_number;
+		else
+			cheapest->sim_move_cost = cheapest->move_number;
+		cheapest->move_number = cheapest->move_number - cheapest->sim_move_cost;
+		target->move_number = target->move_number - cheapest->sim_move_cost;
 	}
-	if (cheapest->sim_move && ((cheapest->reverse && cheapest->move_number) ||
-		(target->reverse && target->move_number)))
-		move(stack_a, stack_b, cheapest->move_number, rrr);
-	else if (cheapest->sim_move && ((!cheapest->reverse && cheapest->move_number) ||
-		(target->reverse && target->move_number)))
-		move(stack_a, stack_b, cheapest->move_number, rr);
+	if (cheapest->sim_move && cheapest->reverse)
+		move(stack_a, stack_b, cheapest->sim_move_cost, rrr);
+	else if (cheapest->sim_move && !cheapest->reverse)
+		move(stack_a, stack_b, cheapest->sim_move_cost, rr);
 	if (cheapest->reverse)
 		move(stack_a, stack_b, cheapest->move_number, rra);
 	else
@@ -54,18 +82,19 @@ void	do_move_l(t_ps **stack_a, t_ps **stack_b, t_ps *cheapest, t_ps *target)
 {
 	if (cheapest->true_cost == 0)
 		return ;
-	if (target->sim_move)
+	if (cheapest->sim_move)
 	{
-		target->reverse = cheapest->reverse;
-		target->move_number = cheapest->true_cost - target->move_number;
-		cheapest->move_number = cheapest->true_cost - cheapest->move_number;
+		if (cheapest->move_number >= target->move_number)
+			cheapest->sim_move_cost = target->move_number;
+		else
+			cheapest->sim_move_cost = cheapest->move_number;
+		cheapest->move_number = cheapest->move_number - cheapest->sim_move_cost;
+		target->move_number = target->move_number - cheapest->sim_move_cost;
 	}
-	if (cheapest->sim_move && ((cheapest->reverse && cheapest->move_number) ||
-		(target->reverse && target->move_number)))
-		move(stack_a, stack_b, cheapest->move_number, rrr);
-	else if (cheapest->sim_move && ((!cheapest->reverse && cheapest->move_number) ||
-		(target->reverse && target->move_number)))
-		move(stack_a, stack_b, cheapest->move_number, rr);
+	if (cheapest->sim_move && cheapest->reverse)
+		move(stack_a, stack_b, cheapest->sim_move_cost, rrr);
+	else if (cheapest->sim_move && !cheapest->reverse)
+		move(stack_a, stack_b, cheapest->sim_move_cost, rr);
 	if (cheapest->reverse)
 		move(stack_a, stack_b, cheapest->move_number, rrb);
 	else

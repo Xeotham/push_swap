@@ -61,6 +61,9 @@ PRINTF = ft_printf.c \
 	printf_char_print.c \
 	printf_nbr_print.c \
 	printf_hex_print.c
+#================ GNL SOURCES ===============#
+GNL = GNL/get_next_line.c\
+	GNL/get_next_line_utils.c
 
 #============ TRANSFORM .c TO .o ============#
 #============== MANDATORY PART ==============#
@@ -72,18 +75,21 @@ OBJB = $(BONUS:.c=.o)
 #================ BONUS PART ================#
 OBJPR = $(PRINTF:.c=.o)
 
+#================ GNL PART ==================#
+OBJGNL = $(GNL:.c=.o)
+
 #============== EXECUTABLE PART =============#
 
 all : $(NAME)
 
-$(NAME) : $(OBJB) $(OBJM) $(OBJPR)
-	@ar rcs $(NAME) $(OBJB) $(OBJM) $(OBJPR)
+$(NAME) : $(OBJB) $(OBJM) $(OBJPR) $(OBJGNL)
+	@ar rcs $(NAME) $(OBJB) $(OBJM) $(OBJPR) $(OBJGNL)
 	
-%.o : %.c libft.h
+%.o : %.c libft.h GNL/get_next_line.h
 	@$(CC) $(FLAGS) -c $< -o $@
 
 clean :
-	@rm -rf $(OBJB) $(OBJM) $(OBJPR)
+	@rm -rf $(OBJB) $(OBJM) $(OBJPR) $(OBJGNL)
 
 fclean : clean
 	@rm -rf $(NAME)

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 16:35:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/17 11:12:42 by mhaouas          ###   ########.fr       */
+/*   Created: 2024/01/16 09:13:36 by mhaouas           #+#    #+#             */
+/*   Updated: 2024/01/17 16:34:13 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_abs(int to_check)
+void	error_case(void)
 {
-	if (to_check < 0)
-		return (-to_check);
-	return (to_check);
+	ft_printf_fd(2, "Error\n");
+	exit(EXIT_FAILURE);
 }

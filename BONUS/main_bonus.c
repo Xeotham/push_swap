@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 16:35:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/17 11:12:42 by mhaouas          ###   ########.fr       */
+/*   Created: 2024/01/09 17:42:15 by mhaouas           #+#    #+#             */
+/*   Updated: 2024/01/18 13:55:36 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap_bonus.h"
 
-int	ft_abs(int to_check)
+int	main(int argc, char **argv)
 {
-	if (to_check < 0)
-		return (-to_check);
-	return (to_check);
+	char	*tmp;
+	char	**all_args;
+	t_ps	*stack_a;
+
+	if (argc < 2)
+		return (1);
+	tmp = ft_unsplit(argv + 1, " ");
+	if (!tmp)
+		error_case();
+	all_args = ft_split(tmp, ' ');
+	free(tmp);
+	if (!all_args)
+		error_case();
+	check_args(all_args);
+	stack_a = make_stack_a(all_args);
+	free_2d_array(all_args);
+	check_same_args(stack_a);
+	push_swap(stack_a);
 }

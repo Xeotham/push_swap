@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 16:35:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/17 11:12:42 by mhaouas          ###   ########.fr       */
+/*   Created: 2023/12/20 14:29:40 by mhaouas           #+#    #+#             */
+/*   Updated: 2024/01/18 18:50:25 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap_bonus.h"
 
-int	ft_abs(int to_check)
+void	push_swap(t_ps *stack_a)
 {
-	if (to_check < 0)
-		return (-to_check);
-	return (to_check);
+	t_ps	*stack_b;
+
+	stack_b = NULL;
+	make_move(&stack_a, &stack_b);
+	if (stack_b != NULL || !check_sort(stack_a))
+		fail_case(&stack_a, &stack_b);
+	else
+		success_case(&stack_a, &stack_b);
 }

@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 14:29:37 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/18 17:33:08 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/18 18:28:09 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "../Libft/libft.h"
 
 typedef struct s_ps
 {
 	int			number;
-	int			index;
-	int			median;
-	int			move_number;
-	int			true_cost;
-	int			sim_move;
-	int			sim_move_cost;
-	int			reverse;
-	struct s_ps	**stack;
-	struct s_ps	*target;
 	struct s_ps	*next;
 }				t_ps;
+
+enum			e_move
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+};
 
 void			push_swap(t_ps *stack_a);
 
@@ -72,45 +78,17 @@ void			sb(t_ps **stack_a, t_ps **stack_b);
 
 void			sa(t_ps **stack_a, t_ps **stack_b);
 
-void			find_median(t_ps **stack);
-
-void			find_target_f(t_ps **stack_search, t_ps **stack_target);
-
-void			find_target_l(t_ps **stack_search, t_ps **stack_target);
-
-void			check_cost(t_ps **stack_search);
+void			make_move(t_ps **stack_a, t_ps **stack_b);
 
 int				check_sort(t_ps *list);
-
-t_ps			*find_cheapest(t_ps *to_search);
 
 void			move(t_ps **stack_a, t_ps **stack_b, int to_comp,
 					void move(t_ps **, t_ps **));
 
-void			make_best_move_f(t_ps **stack_a, t_ps **stack_b);
-
-void			make_best_move_l(t_ps **stack_a, t_ps **stack_b);
-
-void			do_move_f(t_ps **stack_a, t_ps **stack_b, t_ps *cheapest,
-					t_ps *target);
-
-void			do_move_l(t_ps **stack_a, t_ps **stack_b, t_ps *cheapest,
-					t_ps *target);
-
-void			first_sort(t_ps **stack_a, t_ps **stack_b);
-
-void			little_sort(t_ps **stack_a);
-
-void			second_sort(t_ps **stack_b, t_ps **stack_a);
-
-void			last_sort(t_ps **stack_a);
-
-t_ps			*find_smallest(t_ps *stack);
-
-t_ps			*find_biggest(t_ps *stack);
-
-t_ps			*find_cheapest(t_ps *to_search);
-
 void			error_case(void);
+
+void			success_case(t_ps **stack_a, t_ps **stack_b);
+
+void			fail_case(t_ps **stack_a, t_ps **stack_b);
 
 #endif

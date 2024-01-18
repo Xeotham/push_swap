@@ -6,13 +6,14 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:50:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/10 16:37:19 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:25:41 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "GNL/get_next_line.h"
 # include <fcntl.h>
 # include <stdarg.h>
 # include <stdlib.h>
@@ -85,12 +86,13 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 /*=================== PRINTF PART ===================*/
+int					ft_printf_fd(int fd, const char *str, ...);
 int					ft_printf(const char *str, ...);
-int					ft_cputstr(char *str);
-int					ft_cputnbr(int nb);
-int					ft_cuputnbr(unsigned int nb);
-int					ft_cputchar(char c);
-int					ft_convert_to_hex(unsigned int nb, char type);
-int					ft_point_to_hex(unsigned long long nb);
+int					ft_cputstr(int fd, char *str);
+int					ft_cputnbr(int fd, int nb);
+int					ft_cuputnbr(int fd, unsigned int nb);
+int					ft_cputchar(int fd, char c);
+int					ft_convert_to_hex(int fd, unsigned int nb, char type);
+int					ft_point_to_hex(int fd, unsigned long long nb);
 
 #endif
