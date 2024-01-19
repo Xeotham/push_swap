@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:36:45 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/18 18:27:49 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:06:25 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	sa(t_ps **stack_a, t_ps **stack_b)
 void	sb(t_ps **stack_a, t_ps **stack_b)
 {
 	(void) stack_a;
-	swap(stack_b);
+	*stack_b = swap(stack_b);
 }
 
 void	ss(t_ps **stack_a, t_ps **stack_b)
 {
-	swap(stack_a);
-	swap(stack_b);
+	*stack_a = swap(stack_a);
+	*stack_b = swap(stack_b);
 }

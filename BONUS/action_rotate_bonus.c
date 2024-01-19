@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:35:41 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/18 18:35:45 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:05:32 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,16 @@ void	ra(t_ps **stack_a, t_ps **stack_b)
 {
 	(void)stack_b;
 	rotate(stack_a);
-	write(1, "ra\n", 3);
 }
 
 void	rb(t_ps **stack_a, t_ps **stack_b)
 {
 	(void) stack_a;
 	rotate(stack_b);
-	write(1, "rb\n", 3);
 }
 
 void	rr(t_ps **stack_a, t_ps **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	write(1, "rr\n", 3);
 }

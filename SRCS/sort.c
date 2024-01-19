@@ -6,12 +6,11 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:16:29 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/18 10:09:05 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:23:15 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	last_sort(t_ps	**stack_a)
 {

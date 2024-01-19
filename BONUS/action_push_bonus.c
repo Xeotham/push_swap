@@ -6,7 +6,7 @@
 /*   By: mhaouas <mhaouas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:22:38 by mhaouas           #+#    #+#             */
-/*   Updated: 2024/01/18 18:33:32 by mhaouas          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:05:15 by mhaouas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ void	push(t_ps **push_to, t_ps **push_from)
 void	pa(t_ps **begining_a, t_ps **begining_b)
 {
 	push(begining_a, begining_b);
-	write(1, "pa\n", 3);
 }
 
 void	pb(t_ps **begining_a, t_ps **begining_b)
 {
 	push(begining_b, begining_a);
-	write(1, "pb\n", 3);
 }
